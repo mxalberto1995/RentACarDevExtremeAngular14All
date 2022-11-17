@@ -1,0 +1,27 @@
+<div class="table-responsive">
+  <dx-data-grid id="gridContainer" [dataSource]="brandDataSource" keyExpr="id" [focusedRowEnabled]="true" [cacheEnabled]="false"
+    [showBorders]="true" [columnAutoWidth]="true" (onRowInserting)="insertRow($event)"
+    (onRowRemoving)="removeRow($event)" (onInitNewRow)="initNewBrand('InitNewRow')" (onEditingStart)="editingBrand('EditingStart')" (onRowUpdating)="updateRow($event)">
+    <dxo-load-panel [enabled]="true">
+    </dxo-load-panel>
+    <dxo-header-filter [visible]="true" [allowSearch]="true"></dxo-header-filter>
+    <dxo-paging [pageSize]="5"></dxo-paging>
+    <dxo-editing mode="popup" [allowUpdating]="true" [allowDeleting]="true" [allowAdding]="true">
+    </dxo-editing>
+    <dxo-pager [showPageSizeSelector]="true" [allowedPageSizes]="[5, 10, 20]" [showInfo]="true">
+    </dxo-pager>
+    <dxi-column dataField="id" caption="Id" [width]="50"></dxi-column>
+    <dxi-column dataField="name" caption="Marka"></dxi-column>
+
+    <dxo-editing mode="popup" [allowUpdating]="true">
+      <dxo-popup title={{popupTitle}} [showTitle]="true" [width]="300" [height]="300">
+      </dxo-popup>
+      <dxo-form [colCount]="1">
+        <dxi-item dataField="name">
+          <dxi-validation-rule type="required" message="Marka Zorunludur !"></dxi-validation-rule>
+        </dxi-item>
+      </dxo-form>
+    </dxo-editing>
+    <dxo-export [enabled]="true" [allowExportSelectedData]="false"></dxo-export>
+  </dx-data-grid>
+</div>
